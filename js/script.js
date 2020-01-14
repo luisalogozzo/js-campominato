@@ -23,16 +23,22 @@ console.log(randomArray);
 var trovato = false;
 var y = 0;
 do {
-  var NumeroScelto = prompt('Scegli un numero da 1 a 100');
-  var j = 0;
-  do {
-    if (NumeroScelto == randomArray[j] ) {
-       trovato = true;
+  document.getElementById('gioca').addEventListener('click',
+  function() {
+    var NumeroScelto = document.getElementById('input').value;
+    var j = 0;
+    do {
+      if (NumeroScelto == randomArray[j] ) {
+         trovato = true;
+      }
+      j++;
+    } while (trovato == false && j < 16);
+    y++;
+    if (trovato == false) {
+      document.getElementById('cella' + NumeroScelto).classList.add('green');
     }
-    j++;
-  } while (trovato == false && j < 16);
-  y++;
-} while (trovato == false && y < 84);
+  });  
+} while (trovato == false && y < 1);
 
 if (trovato == false) {
   alert('hai vinto');
